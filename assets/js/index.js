@@ -65,7 +65,7 @@ function recentlySearched() {
 
 function getCurrentWeather(city) {
   let queryURL =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&units=metric&appid=" +
     API_KEY;
@@ -111,7 +111,7 @@ function getCurrentWeather(city) {
 
 function getForecast(city) {
   let queryURL =
-    "http://api.openweathermap.org/data/2.5/forecast?q=" +
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
     "&units=metric&appid=" +
     API_KEY;
