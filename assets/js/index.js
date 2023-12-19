@@ -78,7 +78,7 @@ function getCurrentWeather(city) {
       $("#today").empty();
       $("#today").append(
         $("<div>").addClass(
-          "mt-4 p-5 bg-success text-white rounded current-weather col-10"
+          "mt-4 p-5 bg-success text-white rounded current-weather col-8"
         )
       );
       $(".current-weather").append($("<h1>").text(city.toUpperCase()));
@@ -129,33 +129,35 @@ function getForecast(city) {
 function displayWeeks(datesArray, forecastArray) {
   $("#forecast").empty();
   for (let i = 0; i < 5; i++) {
-    let weatherCard = createWeatherCard(datesArray[i], forecastArray[i].main.temp, forecastArray[i].main.temp);
+    let weatherCard = createWeatherCard(
+      datesArray[i],
+      forecastArray[i].main.temp,
+      forecastArray[i].main.feels_like,
+      forecastArray[i].main.temp_min,
+      forecastArray[i].main.temp_max,
+      forecastArray[i].main.humidity
+    );
     $("#forecast").append(weatherCard);
-
-    // let dateSpan = $('<span>').text(datesArray[i]).addClass('display-6 text-center fw-bolder bg-success rounded px-3 py-1')
-    // dayDiv.attr('id', 'day' + [i+1]);
-    // let dateHeader = $('<h6>').text(datesArray[i]).addClass('text-center fw-bold fs-5 text-primary');
-    // dayDiv.append(dateHeader);
-    // Add the weather icon and temp to the div
-    // let weatherIcon = $('<img>')
-    // .attr('src', 'https://openweathermap.org/img/wn/' + forecastArray[i].we + '@2x.png')
-    // .addClass('float-start img-fluid');
-    // let tempPara = $('<p>').text('Temp: ' + forecastArray[i].main.temp + ' ').addClass('fs-5 text-secondary float-end');
-    // dayDiv.append(weatherIcon).append(tempPara);
-    // $("#forecast").append(dayDiv, dayUl, dayLi);
-    //create 5 cards using bootstrap for temperature forecast in js and jquery dynamically?
   }
-
-  //create bootstrap cards using jquery?
 }
 
-function createWeatherCard(date, temperature, condition) {
-  var card = `<div class="col-md-2">
-                        <div class="card">
+function createWeatherCard(
+  date,
+  temperature,
+  feels_like,
+  temp_min,
+  temp_max,
+  humidity
+) {
+  var card = `<div class="col-md-2 mt-3">
+                        <div class="card bg-info" >
                             <div class="card-body">
                                 <h5 class="card-title">${date}</h5>
-                                <p class="card-text">Temperature: ${temperature}</p>
-                                <p class="card-text">Condition: ${condition}</p>
+                                <p class="card-text">Temperature: ${temperature}°C</p>
+                                <p class="card-text">Feels Like: ${feels_like}°C</p>
+                                <p class="card-text">Min Temp: ${temp_min}°C</p>
+                                <p class="card-text">Max Temp: ${temp_max}°C</p>
+                                <p class="card-text">Humidity: ${humidity}%</p>
                             </div>
                         </div>
                     </div>`;
